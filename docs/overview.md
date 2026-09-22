@@ -1,9 +1,14 @@
 ---
 created: 2026-09-20
-updated: 2026-09-20
+updated: 2026-09-22
 ---
 
 # Overview
+
+## Status
+
+Direction confirmed. The specific scope boundaries and success metrics below
+are a first draft and have not been ratified by the team.
 
 Purpose: describe the problem this project solves, who it is for, and what is
 in and out of scope. Read this before the architecture.

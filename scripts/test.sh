@@ -11,7 +11,7 @@ cd "$(dirname "$0")/.."
 
 if [ ! -d backend ]; then
   echo "No backend/ directory yet — nothing to test."
-  echo "See plan/roadmap.md for what is built when."
+  echo "See plan/active.md for current work and unresolved planning decisions."
   exit 0
 fi
 
