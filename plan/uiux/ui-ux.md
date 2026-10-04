@@ -56,7 +56,7 @@ Each file has one job. Put new information in the file whose job it matches.
 | [plan/uiux/flow-validation.md](flow-validation.md) | Proof that the app follows the flowcharts | Each master-flowchart node, what is checked, and the test that checks it; gaps; observations | The rules themselves (user-flows.md) |
 | [plan/active.md](../active.md) | Handoff | Current state: what is uncommitted, how to verify, what is undecided, the next step | The history of changes; rules or design that other files own |
 | [plan/uiux/ui-first-pass-changelog.md](ui-first-pass-changelog.md) | Changelog | What changed and when on the UI first pass. It records history; it is not a source of truth for logic | Current state or next steps (those go in active.md); rules or design that other files own |
-| [plan/questions.md](../questions.md) | Project-wide open questions | Questions that block scope, stack, or delivery (question 8 covers scheduling preferences) | UI-only questions (scheduling ones go in user-flows.md, the rest in DESIGN.md) |
+| [plan/questions.md](../questions.md) | Project-wide open questions | Questions that block scope, stack, or delivery, including scheduling choices the whole team must make (questions 8–10: preferences, placement strategy, per-task inputs) | Other UI questions (scheduling ones go in user-flows.md, the rest in DESIGN.md) |
 | [Figma file](https://www.figma.com/design/WfwTiXHXI0EWa2wmuamydZ/senior-design) | Visual mockups | Screen layouts and visual style | Behavior; when a mockup disagrees with user-flows.md or DESIGN.md, those files win |
 
 ## Getting up to speed
@@ -66,6 +66,8 @@ Each file has one job. Put new information in the file whose job it matches.
    rules and the rule reference.
 3. Run the app ([README](../../web/README.md)) and try each flow.
 4. Read [DESIGN.md](../../web/DESIGN.md) if you will change the app.
+5. Skim [flow-validation.md](flow-validation.md) to see how the app is checked against
+   the flowcharts, and the observations it raises for the team.
 
 ## Changing the UI/UX
 
@@ -84,5 +86,6 @@ user-flows.md.
    the app (and the README if running or
    trying it changed).
 3. **A new open question:** scheduling questions go in user-flows.md under "Still open";
-   other UI questions go in DESIGN.md under "Open choices"; questions that affect scope,
+   if the whole team must decide one, also add it to plan/questions.md and link the two.
+   Other UI questions go in DESIGN.md under "Open choices"; questions that affect scope,
    stack, or delivery go in plan/questions.md.
