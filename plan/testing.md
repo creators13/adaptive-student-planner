@@ -35,6 +35,11 @@ it is relevant to the scope students approve.
 ## Verification evidence
 
 Record the commands run, results, and any skipped checks in the PR or handoff.
-The existing script entry points are described in the
-[README](../README.md#verification-today); their current no-op results are not
-application test evidence. Tool selection remains an [open question](questions.md).
+The script entry points are described in the [README](../README.md#verification-today).
+For the web app they run real checks: lint (ESLint), typecheck (TypeScript), tests (Vitest
+and Testing Library), and a build, as proposed in
+[decision 0001](../docs/decisions/0001-frontend-react-typescript.md). The web app's tests
+cover its scheduling rules (constraints, conflicting events, work that does not fit) and
+every step of both flowcharts ([flow-validation.md](uiux/flow-validation.md)); the other
+concerns above do not apply yet, because there are no accounts, imports, or integrations. Backend testing
+tools remain an [open question](questions.md).

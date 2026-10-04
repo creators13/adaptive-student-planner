@@ -11,11 +11,11 @@ records history; it is not a source of truth for logic (see the file map in
 
 - Product direction and flows: the rewritten goal in [docs/overview.md](../../docs/overview.md)
   and the two flows in [user-flows.md](user-flows.md).
-- [prototype/](../../prototype/README.md) is a clickable UI of both flows in plain HTML, CSS,
+- `prototype/` is a clickable UI of both flows in plain HTML, CSS,
   and JavaScript (no packages, no build step), following the team's Figma. Scheduling
-  rules live in one pure module, [prototype/js/engine.js](../../prototype/js/engine.js), with
+  rules live in one pure module, `prototype/js/engine.js`, with
   31 tests. The LLM, duration model, accounts, and calendar sync are placeholders.
-- [prototype/DESIGN.md](../../prototype/DESIGN.md) records how it was built and how to rebuild
+- `prototype/DESIGN.md` (now [web/DESIGN.md](../../web/DESIGN.md)) records how it was built and how to rebuild
   it, and points to user-flows.md for every rule. Open choices are listed there.
 
 ## 2026-10-03
@@ -30,7 +30,7 @@ records history; it is not a source of truth for logic (see the file map in
   logic (narrowed on 2026-10-04 to scheduling logic; see below), edited directly by the
   team. It includes a rule reference that marks placeholders (re-estimation math,
   preference defaults, the LLM) and prototype limits (28-day "anytime", 8-week
-  never-ending repeats). [prototype/DESIGN.md](../../prototype/DESIGN.md) is the source of
+  never-ending repeats). `prototype/DESIGN.md` is the source of
   truth for how the prototype was designed and built from those rules.
 - Later: added [ui-ux.md](ui-ux.md), then in `docs/` (UI/UX goal, principles, and a map giving
   each UI/UX file one job), linked from the overview. Tasks are now called **fixed** or
@@ -93,3 +93,29 @@ records history; it is not a source of truth for logic (see the file map in
   handoff.
 - Moved `docs/ui-ux.md`, `plan/specs/user-flows.md`, and this changelog into `plan/uiux/`,
   since all three describe proposed work, not adopted behavior. Links updated.
+- Committed as `8155c87` ("add clickable prototype of the scheduling flows").
+- Howard decided the prototype is a first draft to build on, not a throwaway, and chose
+  React with TypeScript for it, to be accepted or rejected with the pull request
+  ([decision 0001](../../docs/decisions/0001-frontend-react-typescript.md), proposed).
+  Converted the whole app into [web/](../../web/README.md) (React 19, TypeScript strict,
+  Vite; tests with Vitest and Testing Library; ESLint), where `scripts/check.sh` already
+  expected the frontend. Behavior was kept identical: the 31 engine tests were ported line
+  for line; screenshots of all four pages matched the plain-JS version pixel for pixel; and
+  a 25-step browser walkthrough of both flows gave identical dialogs, toasts, and saved
+  schedules in both versions. README and DESIGN.md moved to `web/` and were updated; the
+  plain-JS code was removed (it remains in `8155c87`). `prototype/brand/`, which was never
+  committed, was left in place.
+- Fixed while converting: Weekly Plan shaded the whole day when work hours ended exactly
+  at midnight.
+- Added flowchart validation: 40 UI tests that walk every node of both master flowcharts,
+  mapped node by node in [flow-validation.md](flow-validation.md). All pass. One
+  observation for the team is recorded there (adding milestones after "not finished" can
+  trim the plan).
+- Made the rest of the branch consistent with the web app, at Howard's request: the
+  README (description, status and stack rows, a "Run the app" section, "Where things
+  live", verification, remaining setup), AGENTS.md (setup commands, test commands, which
+  conventions apply now), `scripts/check.sh` (asks for `npm install` instead of failing
+  on npm), `scripts/test.sh` (runs the web tests, by path or name), `plan/testing.md`,
+  `plan/questions.md` (questions 4 and 7), and an index in `docs/decisions/README.md`.
+  Moved the completed planning-cleanup log out of `plan/active.md` into
+  `plan/archive/2026-10-planning-cleanup.md`.

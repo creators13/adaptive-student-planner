@@ -12,7 +12,11 @@ technology, or a delivery schedule. These questions do not select an approach.
 3. **Constraints:** Which course deadlines, budget limits, access requirements,
    and team skills must shape the implementation?
 4. **Stack and architecture:** Which tools and components are needed for that
-   first version, and what alternatives and tradeoffs justify the choice?
+   first version, and what alternatives and tradeoffs justify the choice? The frontend is
+   proposed as React and TypeScript
+   ([decision 0001](../docs/decisions/0001-frontend-react-typescript.md), settled with the
+   `hxu/ui-first-pass` pull request); the backend, data storage, hosting, and architecture
+   are still open.
 5. **Data and evaluation:** What data can be collected with consent, and what
    evidence would demonstrate usefulness? Which baselines and measures fit the
    agreed scope?
@@ -20,7 +24,8 @@ technology, or a delivery schedule. These questions do not select an approach.
    others, and what delivery targets can the students commit to?
 7. **Verification and operation:** What checks and development environment are
    needed for the first version? Review the [proposed testing concerns](testing.md)
-   once scope is clear.
+   once scope is clear. The web app's checks exist (`scripts/check.sh`); the backend's and
+   any CI setup are still open.
 8. **Scheduling preferences:** What data must the planner collect from a student
    to know when a floating task is suitably placed (for example, preferred
    working hours, cut-off times, or session lengths)?

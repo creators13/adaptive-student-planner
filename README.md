@@ -1,11 +1,11 @@
 # Adaptive Student Planner
 
-Last updated: 2026-09-22
+Last updated: 2026-10-04
 
-A student planner that learns how long your work actually takes. You enter or
-import assignments, the system estimates the effort each one needs, proposes a
-weekly schedule you approve, records the time you really spend, and uses that
-feedback to improve future estimates.
+A student planner that schedules your work for you and learns how long it actually
+takes. You add assignments and other tasks, the system estimates the effort each one
+needs and places it in your free time, asks how each session went, and uses that
+feedback to improve future estimates. See [docs/overview.md](docs/overview.md).
 
 Built as a UPenn CIS 4000/4100 senior project (Fall 2026 – Spring 2027).
 
@@ -16,19 +16,33 @@ not proposals awaiting team ratification. Changes to them require Allen's approv
 
 ## Project status
 
-Pre-implementation — project context only, no application code yet.
+First draft of the web app, on branch `hxu/ui-first-pass` for team review. It runs in
+the browser with sample data and a demo clock; there is no backend yet.
 
 | | |
 |---|---|
 | Direction | Decided |
 | Team | Formed |
 | Adviser | Confirmed |
-| **Tech stack** | **Not decided** |
+| **Frontend** | **Proposed:** React + TypeScript ([decision 0001](docs/decisions/0001-frontend-react-typescript.md)), accepted or rejected with the pull request |
+| **Backend and the rest of the stack** | **Not decided** ([question 4](plan/questions.md)) |
 | **Architecture** | **Not decided** |
 
-There are no application services to install or run yet. Start with the
-[open planning questions](plan/questions.md) before choosing or provisioning tools.
-The scope and metrics in [the overview](docs/overview.md) also await team review.
+Start with the [open planning questions](plan/questions.md) before choosing or
+provisioning further tools. The scope and metrics in [the overview](docs/overview.md)
+also await team review.
+
+## Run the app
+
+Needs [Node.js](https://nodejs.org/) 22.22 or newer.
+
+```bash
+cd web
+npm install    # once, and again when package.json changes
+npm run dev    # then open the address it prints
+```
+
+[web/README.md](web/README.md) walks through trying both flows.
 
 ## Start here
 
@@ -51,10 +65,11 @@ The scope and metrics in [the overview](docs/overview.md) also await team review
 | [AGENTS.md](AGENTS.md) | Shared instructions for coding agents | Changes directed and reviewed by students |
 | [CLAUDE.md](CLAUDE.md) | Imports `AGENTS.md` and adds Claude-specific guidance | Changes directed and reviewed by students |
 | [scripts/](scripts/) | Repeatable verification commands | Students or AI, with student review |
+| [web/](web/README.md) | The web app (proposed: React, TypeScript, Vite); its README and design record | Students or AI, with student review |
+| [plan/uiux/](plan/uiux/ui-ux.md) | UI/UX proposals: principles, the scheduling flows and rules, validation | Students or AI; proposals require authorization before implementation |
 
-`team/meetings/` has been created locally and is empty. Git will track its contents
-once a student adds the first summary. Application directories will be chosen
-with the stack; no application layout has been selected.
+`team/meetings/` holds dated meeting summaries written by students. A backend directory
+will be chosen with the rest of the stack.
 
 The separation preserves student-authored sources in `team/` while letting AI
 maintain all documentation and plans. Students can edit every area. No folder
@@ -194,22 +209,24 @@ part of this project workflow. Everyone has already been added to GitHub.
 ## Verification today
 
 ```bash
-./scripts/check.sh   # verification entry point
-./scripts/test.sh    # targeted test entry point
+./scripts/check.sh   # everything: lint, typecheck, tests, and build of web/
+./scripts/test.sh    # targeted tests: a path or a test-name filter
 ```
 
-Both scripts currently skip application checks because application code does not
-exist. An exit code of zero today does **not** mean the application was tested.
-Their candidate-stack commands must be reviewed when the team chooses the stack
-and introduces code. [plan/testing.md](plan/testing.md) contains proposed testing
-concerns, not a selected toolchain or working setup instructions.
+Run `npm install` in `web/` first. `check.sh` checks the web app for real; the backend
+section is skipped because there is no backend yet, so an exit code of zero does not cover
+one. The backend commands in the scripts are candidates to review when the team chooses
+the backend. [plan/testing.md](plan/testing.md) lists proposed testing concerns.
 
 ## Remaining setup
 
 - Share the established organization and operating rules with teammates.
-- Add project scope and MVP information after this organization commit.
+- Team review of the project scope and the proposed MVP flows
+  ([docs/overview.md](docs/overview.md), [plan/uiux/user-flows.md](plan/uiux/user-flows.md)).
 - Student-created meeting summaries, followed by reviewed documentation and
   decision updates using the clarification workflow above.
 - Meeting and PR templates are intentionally not used.
-- Resolve [open planning questions](plan/questions.md), then document the selected
-  stack, first implementation plan, and real setup instructions.
+- Review the web app's frontend stack ([decision 0001](docs/decisions/0001-frontend-react-typescript.md))
+  with its pull request.
+- Resolve the remaining [open planning questions](plan/questions.md), then document the
+  backend, the first implementation plan, and its setup instructions.

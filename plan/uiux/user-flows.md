@@ -13,7 +13,7 @@ task.** Every rule here is stated in terms of general inputs ("a session ends", 
 student chooses to keep the overlap", "the student has not given feedback yet") and
 never in terms of what an input looks like on screen. What each input looks like in
 practice (a pop-up, a button, a drag, closing a dialog) lives in
-[prototype/DESIGN.md](../../prototype/DESIGN.md), along with every other on-screen
+[web/DESIGN.md](../../web/DESIGN.md), along with every other on-screen
 rule: layout, form checks, defaults in forms, wording, and how results are shown.
 
 Example: "until the student gives feedback on a session, the session is assumed done"
@@ -23,7 +23,8 @@ file should need to change.
 
 Edit this file directly; propose changes the way you would for any other document. The flowcharts are
 Mermaid code blocks, which GitHub renders as diagrams. The
-[prototype](../../prototype/README.md) implements these rules. For the UI/UX
+[app](../../web/README.md) implements these rules, and
+[flow-validation.md](flow-validation.md) checks it against every step of both master charts. For the UI/UX
 goal and a map of every UI/UX file, see [ui-ux.md](ui-ux.md).
 
 ## Two kinds of task
@@ -32,7 +33,7 @@ goal and a map of every UI/UX file, see [ui-ux.md](ui-ux.md).
 
 - **Floating.** The student added it to the to-do list without a time. The planner places it in free time before the deadline.
 
-Students never label tasks. Giving a task a time is what makes it anchored. Moving a floating task to a new time also makes it anchored, and the student can let it float again. The student can also anchor a floating block where it is, without moving it. Anchored events, classes included, can be moved too: moving one changes its time, and for a repeating one the student chooses this event or every repeat that has not happened yet. How the student makes each of these choices is in [DESIGN.md](../../prototype/DESIGN.md).
+Students never label tasks. Giving a task a time is what makes it anchored. Moving a floating task to a new time also makes it anchored, and the student can let it float again. The student can also anchor a floating block where it is, without moving it. Anchored events, classes included, can be moved too: moving one changes its time, and for a repeating one the student chooses this event or every repeat that has not happened yet. How the student makes each of these choices is in [DESIGN.md](../../web/DESIGN.md).
 
 ## How to read the flowcharts
 

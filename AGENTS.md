@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Last updated: 2026-09-22
+Last updated: 2026-10-04
 
 Operating rules for anyone — human or AI agent — working in this repository.
 
@@ -51,16 +51,18 @@ binding. Do not install, provision, or scaffold from an unapproved plan.
 
 ## Setup commands
 
-Follow the setup status in [plan/active.md](plan/active.md) and instructions linked
-from the [README](README.md). Resolve the relevant
-[open planning questions](plan/questions.md) before introducing setup commands;
-proposed tools are not authorization to provision services.
+The web app's setup is in [web/README.md](web/README.md) (`cd web && npm install`; Node
+22.22 or newer). Follow the setup status in [plan/active.md](plan/active.md) and
+instructions linked from the [README](README.md). Resolve the relevant
+[open planning questions](plan/questions.md) before introducing setup commands for anything
+else (a backend, a database, hosted services); proposed tools are not authorization to
+provision services.
 
 ## Test and verification commands
 
 ```bash
 ./scripts/check.sh   # everything: lint, typecheck, tests, build
-./scripts/test.sh    # targeted tests; pass a path or -k expression
+./scripts/test.sh    # targeted tests; pass a path, a -t name filter (web), or -k (backend)
 ```
 
 Prefer these over ad-hoc commands so CI and local runs stay identical. See
@@ -69,10 +71,12 @@ the [README](README.md#verification-today) for current limitations and
 
 ## Code style and conventions
 
-The FastAPI/Pydantic, TypeScript, Supabase, and worker conventions below are
-conditional on team approval of that candidate design; they do not select the
-stack or architecture. The same qualification applies to stack-specific security
-and completion requirements later in this file.
+The web app's frontend stack (React, TypeScript, Vite) is proposed in
+[decision 0001](docs/decisions/0001-frontend-react-typescript.md) and settled with its pull
+request; the TypeScript convention below applies to it now. The FastAPI/Pydantic, Supabase,
+and worker conventions are conditional on team approval of that candidate backend design;
+they do not select the backend or architecture. The same qualification applies to
+stack-specific security and completion requirements later in this file.
 
 - Python: FastAPI + Pydantic models at every API boundary. Type hints required.
   Business logic lives in plain functions that are callable from both the API

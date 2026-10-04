@@ -2,9 +2,9 @@
 # Full verification: lint, typecheck, test, build.
 # Run this before opening a pull request and quote its output as evidence.
 #
-# Sections for directories that do not exist yet are skipped, so this script is
-# safe to run on the current pre-implementation repository. When you create
-# web/ or backend/, uncomment the matching commands in the same change.
+# Sections for directories that do not exist yet are skipped. The web app (web/) is
+# checked for real; run `npm install` in web/ first. When you create backend/, review
+# its commands below in the same change.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -15,6 +15,10 @@ section() { printf '\n\033[1m==> %s\033[0m\n' "$1"; }
 
 if [ -d web ]; then
   section "Frontend"
+  if [ ! -d web/node_modules ]; then
+    echo "web/node_modules is missing. Run: (cd web && npm install)" >&2
+    exit 1
+  fi
   (cd web && npm run lint && npm run typecheck && npm test && npm run build)
   ran=$((ran + 1))
 else
