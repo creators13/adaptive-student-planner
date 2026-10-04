@@ -1,6 +1,6 @@
 ---
 created: 2026-09-20
-updated: 2026-09-22
+updated: 2026-10-03
 ---
 
 # Overview
@@ -13,7 +13,50 @@ are a first draft and have not been ratified by the team.
 Purpose: describe the problem this project solves, who it is for, and what is
 in and out of scope. Read this before the architecture.
 
-## The problem
+## Goal
+
+Automate scheduling and time management for students, so they no longer have to
+fit their flexible work into their free time by hand.
+
+Duration estimation is a crucial component, because a task cannot be placed well
+without knowing how long it will take. It is not the whole project: students also
+need a clear way to see and work with what the automation does.
+
+## Target users
+
+University students. They have large blocks of free time outside lectures and a
+large amount of unsupervised work that can be done at flexible times. Fitting that
+work into those gaps by hand takes real effort, and recurring tasks and errands
+demand the same effort again every week. A tool that automatically places flexible
+work into flexible time helps this population the most.
+
+## Vision
+
+The student keeps a to-do list. Each task is either:
+
+- **Fixed:** the student gave it a time. The planner treats that time as a
+  commitment and never moves it.
+- **Floating:** the student did not give it a time. The planner schedules it
+  automatically in the student's free time, before its deadline, at a time that
+  suits the student.
+
+Recurring tasks are the clearest case of floating work, but any task without a
+set time floats, including one-off work such as an essay due Friday.
+
+The student does not label tasks as fixed or floating; giving a task a time is
+what makes it fixed. If the student moves a floating task, it becomes fixed. The
+student can unlock a fixed task to make it floating again.
+
+The planner schedules without waiting for approval. The student can view the
+schedule at any time and adjust it.
+
+What makes a time suitable differs between students. Which preferences the
+planner must collect is an open question.
+
+The proposed [MVP user flows](../plan/specs/user-flows.md) show step by step how a
+student adds a task and reports on a finished session.
+
+## Why task duration estimation matters
 
 Students do not plan badly because they lack a calendar. They plan badly because
 they do not know how long their work will take. A problem set budgeted for two
@@ -32,24 +75,15 @@ Close the loop between estimate and outcome:
    assignment page.
 2. **Estimate** how long each will take, starting from the student's own guess
    and category baselines.
-3. **Schedule** the work into real free time around fixed commitments and
-   deadlines, and ask the student to approve the result.
+3. **Schedule** floating tasks automatically into real free time around fixed
+   tasks, commitments, and deadlines. The student can view and adjust the
+   schedule at any time.
 4. **Observe** what actually happened through a lightweight timer and
    after-the-fact corrections.
 5. **Learn** from those observations, so the next estimate for this student on
    this kind of task is better than the last.
 
 Step 5 is what distinguishes this from a to-do list with a calendar view.
-
-## Users
-
-The pilot user is a university student with five or six concurrent courses,
-recurring assignments with deadlines, and irregular free time. The first study
-population is UPenn students, recruited for a consented diary pilot.
-
-Two properties make this population workable: they are reachable for repeated
-testing, and their workload is naturally repetitive enough that a per-student
-model has something to learn within one semester.
 
 ## What success means
 
@@ -70,7 +104,8 @@ hides one student for whom the model is useless is not a success.
 
 - Assignment capture: manual entry and document import
 - Duration estimation with uncertainty
-- Constraint-based weekly scheduling with explicit student approval
+- Automatic constraint-based scheduling of floating tasks, with manual
+  adjustment and locking by the student
 - Work-session logging and correction
 - Calendar integration: manual events, ICS import, then Google Calendar
 - Model training, evaluation, and versioned promotion

@@ -21,6 +21,9 @@ technology, or a delivery schedule. These questions do not select an approach.
 7. **Verification and operation:** What checks and development environment are
    needed for the first version? Review the [proposed testing concerns](testing.md)
    once scope is clear.
+8. **Scheduling preferences:** What data must the planner collect from a student
+   to know when a floating task is suitably placed (for example, preferred
+   working hours, cut-off times, or session lengths)?
 
 Record answers in [decision records](../docs/decisions/) or focused plans with
 their human owners and explicit approval evidence. Keep unresolved choices open;
