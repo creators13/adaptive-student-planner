@@ -16,7 +16,7 @@ in and out of scope. Read this before the architecture.
 ## Goal
 
 Automate scheduling and time management for students, so they no longer have to
-fit their flexible work into their free time by hand.
+fit their floating work into their free time by hand.
 
 Duration estimation is a crucial component, because a task cannot be placed well
 without knowing how long it will take. It is not the whole project: students also
@@ -27,25 +27,25 @@ need a clear way to see and work with what the automation does.
 University students. They have large blocks of free time outside lectures and a
 large amount of unsupervised work that can be done at flexible times. Fitting that
 work into those gaps by hand takes real effort, and recurring tasks and errands
-demand the same effort again every week. A tool that automatically places flexible
-work into flexible time helps this population the most.
+demand the same effort again every week. A tool that automatically places floating
+work into free time helps this population the most.
 
 ## Vision
 
 The student keeps a to-do list. Each task is either:
 
-- **Fixed:** the student gave it a time. The planner treats that time as a
+- **Anchored:** the student gave it a time. The planner treats that time as a
   commitment and never moves it.
 - **Floating:** the student did not give it a time. The planner schedules it
   automatically in the student's free time, before its deadline, at a time that
   suits the student.
 
 Recurring tasks are the clearest case of floating work, but any task without a
-set time floats, including one-off work such as an essay due Friday.
+set time is floating, including one-off work such as an essay due Friday.
 
-The student does not label tasks as fixed or floating; giving a task a time is
-what makes it fixed. If the student moves a floating task, it becomes fixed. The
-student can unlock a fixed task to make it floating again.
+The student does not label tasks as anchored or floating; giving a task a time is
+what makes it anchored. If the student moves a floating task, it becomes anchored. The
+student can let an anchored task float again.
 
 The planner schedules without waiting for approval. The student can view the
 schedule at any time and adjust it.
@@ -53,8 +53,9 @@ schedule at any time and adjust it.
 What makes a time suitable differs between students. Which preferences the
 planner must collect is an open question.
 
-The proposed [MVP user flows](../plan/specs/user-flows.md) show step by step how a
-student adds a task and reports on a finished session.
+The proposed [MVP user flows](../plan/uiux/user-flows.md) show step by step how a
+student adds a task and reports on a finished session. For the UI/UX goal and a guide
+to every UI/UX file, start with [UI/UX](../plan/uiux/ui-ux.md).
 
 ## Why task duration estimation matters
 
@@ -75,7 +76,7 @@ Close the loop between estimate and outcome:
    assignment page.
 2. **Estimate** how long each will take, starting from the student's own guess
    and category baselines.
-3. **Schedule** floating tasks automatically into real free time around fixed
+3. **Schedule** floating tasks automatically into real free time around anchored
    tasks, commitments, and deadlines. The student can view and adjust the
    schedule at any time.
 4. **Observe** what actually happened through a lightweight timer and
@@ -105,7 +106,7 @@ hides one student for whom the model is useless is not a success.
 - Assignment capture: manual entry and document import
 - Duration estimation with uncertainty
 - Automatic constraint-based scheduling of floating tasks, with manual
-  adjustment and locking by the student
+  adjustment and anchoring by the student
 - Work-session logging and correction
 - Calendar integration: manual events, ICS import, then Google Calendar
 - Model training, evaluation, and versioned promotion

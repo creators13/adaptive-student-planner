@@ -24,6 +24,21 @@ technology, or a delivery schedule. These questions do not select an approach.
 8. **Scheduling preferences:** What data must the planner collect from a student
    to know when a floating task is suitably placed (for example, preferred
    working hours, cut-off times, or session lengths)?
+9. **Placement strategy:** Should the planner front-load floating work into the
+   nearest free time (finishes early, leaves slack if something slips) or spread
+   it out as evenly as possible before the deadline (lighter days, but delays push
+   work toward the deadline)? Should this be a student preference, for example a
+   slider between the two? A related choice: when a floating session is moved
+   aside by an overlap, should it be re-placed as close as possible to its old
+   time (such as right after the conflict, or split around it) instead of being
+   placed from scratch? Today the prototype places from scratch: earliest day
+   first, one session per day, peak-energy hours within a day (see the fit-check
+   rule in [user-flows.md](uiux/user-flows.md#rule-reference)).
+10. **Per-task scheduling inputs:** Which scheduling preferences can a student
+    override on a single task, with their general preferences as the default?
+    Candidates include session length (preferred, shortest, longest) and the
+    placement strategy from question 9 (front-load or spread out). Today only a
+    task's time of day and whether it can be split are set per task.
 
 Record answers in [decision records](../docs/decisions/) or focused plans with
 their human owners and explicit approval evidence. Keep unresolved choices open;
